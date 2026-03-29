@@ -12,12 +12,10 @@
 <div class="gallery" id="gallery"></div>
 
 <script type ="text/javascript"> 
-  const fs = require('fs');
-
-  const files = fs.readdirSync('./images');
-  console.log(files);
-  fs.writeFileSync('images.json', JSON.stringify(files, null, 2));
-
+  set fso = CreateObject("Scripting.FileSystemObject");  
+  set s = fso.CreateTextFile("./test.txt", True);
+  s.writeline("test");
+  s.Close();
   
   fetch('images.json')
     .then(res => res.json())
