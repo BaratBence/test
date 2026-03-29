@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Gallery</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Dynamic Gallery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>My Photo Gallery</h1>
+<h1>My Photo Gallery</h1>
 
-  <div class="gallery">
-    <img src="images/photo1.png" alt="Photo 1">
-    <img src="images/photo2.jpg" alt="Photo 2">
-    <img src="images/photo3.jpg" alt="Photo 3">
-  </div>
+<div class="gallery" id="gallery"></div>
+
+<script>
+  fetch('images.json')
+    .then(res => res.json())
+    .then(images => {
+      const gallery = document.getElementById('gallery');
+
+      images.forEach(img => {
+        const imageElement = document.createElement('img');
+        imageElement.src = 'images/' + img;
+        gallery.appendChild(imageElement);
+      });
+    });
+</script>
 
 </body>
 </html>
