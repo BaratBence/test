@@ -167,10 +167,11 @@
             }
 
             setHeroBackground() {
-                if (this.images.length > 0) {
-                    const randomImage = this.images[Math.floor(Math.random() * this.images.length)];
-                    this.heroBg.style.backgroundImage = `url(${randomImage.src})`;
-                }
+                //if (this.images.length > 0) {
+                //    const randomImage = this.images[Math.floor(Math.random() * this.images.length)];
+                //    this.heroBg.style.backgroundImage = `url(${randomImage.src})`;
+                this.heroBg.style.backgroundImage = 'url(${this.images[0].src})';
+                    //}
             }
 
             filterImages(category) {
