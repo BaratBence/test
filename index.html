@@ -1,29 +1,29 @@
+📄 index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dynamic Gallery</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<h1>My Photo Gallery</h1>
+<header>
+  <h1>My Photography</h1>
+  <p>Selected Works</p>
+</header>
 
-<div class="gallery" id="gallery"></div>
+<main>
+  <div class="gallery" id="gallery"></div>
+</main>
 
-<script type ="text/javascript"> 
-  fetch('images.json')
-    .then(res => res.json())
-    .then(images => {
-      const gallery = document.getElementById('gallery');
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span id="close">&times;</span>
+  <img id="lightbox-img" />
+</div>
 
-      images.forEach(img => {
-        const imageElement = document.createElement('img');
-        imageElement.src = 'images/' + img;
-        gallery.appendChild(imageElement);
-      });
-    });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
