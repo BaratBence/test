@@ -13,7 +13,7 @@
             // Format: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
             staticImages: [
                 // Uncomment and modify these for static hosting:
-                 { filename: 'photo1.png', title: 'Clair obscure', category: 'portrait' },
+                 { filename: 'photo1.png', title: 'Clair obscur', category: 'portrait' },
                  { filename: 'photo2.png', title: 'Meow', category: 'landscape' },
             ]
         };
@@ -167,11 +167,11 @@
             }
 
             setHeroBackground() {
-                //if (this.images.length > 0) {
-                //    const randomImage = this.images[Math.floor(Math.random() * this.images.length)];
-                //    this.heroBg.style.backgroundImage = `url(${randomImage.src})`;
-                this.heroBg.style.backgroundImage = 'url(${this.images[0].src})';
-                    //}
+                if (this.images.length > 0) {
+                    //const randomImage = this.images[Math.floor(Math.random() * this.images.length)];
+                    const randomImage = this.images[0];    
+                    this.heroBg.style.backgroundImage = `url(${randomImage.src})`;
+                }
             }
 
             filterImages(category) {
