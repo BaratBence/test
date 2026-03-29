@@ -13,8 +13,8 @@
             // Format: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
             staticImages: [
                 // Uncomment and modify these for static hosting:
-                 { filename: 'photo1.png', title: 'Golden Hour', category: 'portrait' },
-                 { filename: 'photo2.png', title: 'Mountain Vista', category: 'landscape' },
+                 { filename: 'photo1.png', title: 'Clair obscure', category: 'portrait' },
+                 { filename: 'photo2.png', title: 'Meow', category: 'landscape' },
             ]
         };
 
