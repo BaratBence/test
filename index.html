@@ -12,6 +12,13 @@
 <div class="gallery" id="gallery"></div>
 
 <script>
+  const fs = require('fs');
+
+  const files = fs.readdirSync('./images');
+  console.log(files);
+  fs.writeFileSync('images.json', JSON.stringify(files, null, 2));
+
+  
   fetch('images.json')
     .then(res => res.json())
     .then(images => {
