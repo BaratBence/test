@@ -56,14 +56,15 @@ class PhotoGallery {
         this.loadImages();
         this.setupEventListeners();
         this.setupScrollEffects();
+        this.startHeroRotation();
     }
 
     loadImages() {
-        images = CONFIG.staticImages.map(img => ({
-                src: CONFIG.imagesFolder + img.filename,
-                title: img.title,
-                category: img.category
-            }));
+        let images = CONFIG.staticImages.map(img => ({
+            src: CONFIG.imagesFolder + img.filename,
+            title: img.title,
+            category: img.category
+        }));
 
         this.images = images;
         this.filteredImages = [...this.images];
@@ -91,8 +92,13 @@ class PhotoGallery {
     }
 
     setHeroBackground(index = 0) {
-        const randomImage = this.images[index];
-        this.heroBg.style.backgroundImage = `url(${randomImage.src})`;
+        const image = this.images[index];
+        this.heroBg.style.opacity = 0;
+        setTimeout(() => {
+            this.heroBg.style.backgroundImage = `url(${image.src})`;
+            this.heroBg.style.opacity = 0.15;
+        }, 1000);
+        
     }
 
 
