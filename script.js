@@ -1,28 +1,19 @@
 // ============================================
-        // CONFIGURATION - Edit these values
-        // ============================================
-        const CONFIG = {
-            // Path to your images folder (relative to this HTML file)
-            imagesFolder: './images/',
+// CONFIGURATION - Edit these values
+// ============================================
+const CONFIG = {
+        imagesFolder: './images/',
+        supportedFormats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
             
-            // Supported image formats
-            supportedFormats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
-            
-            // For static hosting: list your image filenames here
-            // The script will try to auto-detect, but falls back to this list
-            // Format: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
-            staticImages: [
-                // Uncomment and modify these for static hosting:
-                 { filename: 'photo1.png', title: 'Clair obscur', category: 'portrait' },
-                 { filename: 'photo2.png', title: 'Meow', category: 'landscape' },
-            ]
-        };
+        // példa: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
+        images: [
+                { filename: 'photo1.png', title: 'Clair obscur', category: 'portrait' },
+                { filename: 'photo2.png', title: 'Meow', category: 'landscape' },
+        ]
+};
 
-        // ============================================
-        // GALLERY LOGIC
-        // ============================================
-        class PhotoGallery {
-            constructor() {
+class PhotoGallery {
+      constructor() {
                 this.images = [];
                 this.filteredImages = [];
                 this.currentFilter = 'all';
