@@ -119,7 +119,7 @@
             background-size: cover;
             background-position: center;
             filter: grayscale(100%);
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease;
         }
 
         .hero h1 {
