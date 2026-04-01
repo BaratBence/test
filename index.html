@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photomilla</title>
-    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,15 +21,58 @@
 
     <section id="about" class="hero">
         <div class="hero-bg" id="heroBg"></div>
-        <h1>Opauszki Kamilla</h1>
+        <h1>Photomilla</h1>
         <p>Profi esküvői és rendezvény fotós</p>
         <div class="scroll-indicator">
             <span></span>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-inner">
+            <div class="about-photo-col">
+                <div class="about-photo-frame">
+                    <img src="./images/profile.png">
+                </div>
+            </div>
+
+            <div class="about-text-col">
+                <span class="about-eyebrow">Rólam</span>
+                <h2 class="about-heading">Minden pillanat egy történet.</h2>
+                <div class="about-line"></div>
+                <p class="about-bio">
+                    Opauszki Kamilla,
+                    <br>
+                    <br>
+                    A fotózás művészete már gyerekkorom óta szenvedélyem. Hiszek abban, hogy a legjobb fotók nem beállítottak, hanem spontán pillantok, valós érzelmek egy képbe zárva. 
+                    A képkészítés szakmájában már nagyon sok különböző területen helyt álltam. Dolgoztam már sport eseményeken, kisebb esküvőkön, családi rendezvényeken, workshop-okon, magánszemélyekkel így 
+                    közel áll hozzám a kismama, baba vagy páros fotózás is.
+                </p>
+                <div class="about-tags">
+                    <span class="about-tag">Portré</span>
+                    <span class="about-tag">Kis rendezvény</span>
+                    <span class="about-tag">Kismama</span>
+                    <span class="about-tag">Baba</span>
+                    <span class="about-tag">Kis esküvő</span>
+                    <span class="about-tag">Eljegyzés</span>
+                    <span class="about-tag">Születésnap</span>
+                </div>
+                <a href="#contacts" class="about-cta">
+                    Lépj velem kapcsolatba
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
     <div id="pictures" class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Összes</button>
+        <!--<button class="filter-btn active" data-filter="all">Összes</button>-->
         <button class="filter-btn" data-filter="portrait">Portré</button>
         <button class="filter-btn" data-filter="wedding">Esküvő</button>
         <button class="filter-btn" data-filter="event">Rendezvény</button>
@@ -60,8 +101,18 @@
 
     <footer>
         <div id="contacts" class="social-links">
-            <a href="https://www.instagram.com/photomilla/">Instagram</a>
-            <a href="https://www.facebook.com/kamilla.opauszki">Facebook</a>
+            <a href="https://www.instagram.com/photomilla/"
+                ><i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/kamilla.opauszki">
+                <i class="fa-brands fa-facebook"></i>     
+            </a>
+            <a href="mailto:your@email.com">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="tel:+123456789">
+                <i class="fa-solid fa-phone"></i>
+            </a>
         </div>
         <p>© 2026 Photomilla. A legeslegmenőbb fotós csaj.</p>
     </footer>
