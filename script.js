@@ -111,7 +111,7 @@ class PhotoGallery {
         setInterval(() => {
             index = (index + 1) % this.images.length;
             this.setHeroBackground(index);
-        }, 5000);
+        }, 10000);
     }
 
     filterImages(category) {
