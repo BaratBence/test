@@ -67,7 +67,7 @@ class PhotoGallery {
         }));
 
         this.images = images;
-        let filtered = images.filter(image => image.category = this.currentFilter)
+        let filtered = images.filter(image => image.category === this.currentFilter)
         this.filteredImages = [...this.images];
         this.renderGallery();
         this.setHeroBackground();
