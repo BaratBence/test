@@ -38,7 +38,7 @@ class PhotoGallery {
     constructor() {
         this.images = [];
         this.filteredImages = [];
-        this.currentFilter = 'wedding';
+        this.currentFilter = 'portrait';
         this.currentLightboxIndex = 0;
 
         this.gallery = document.getElementById('gallery');
@@ -67,6 +67,7 @@ class PhotoGallery {
         }));
 
         this.images = images;
+        let filtered = images.filter(image => image.category = this.currentFilter)
         this.filteredImages = [...this.images];
         this.renderGallery();
         this.setHeroBackground();
