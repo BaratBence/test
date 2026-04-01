@@ -38,7 +38,7 @@ class PhotoGallery {
     constructor() {
         this.images = [];
         this.filteredImages = [];
-        this.currentFilter = 'all';
+        this.currentFilter = 'portrait';
         this.currentLightboxIndex = 0;
 
         this.gallery = document.getElementById('gallery');
