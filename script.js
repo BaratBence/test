@@ -30,13 +30,10 @@ const CONFIG = {
        // { filename: 'DSC_6946.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
        // { filename: 'DSC_6962.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
        // { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        { filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
-        { filname: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
+        //{ filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
+        { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
                 'cover.jpeg', 'DSC_5932.jpeg'
-        ]},
-        { filname: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'test/', pictures: [
-                'cover.jpeg', 'DSC_5932.jpeg'
-        ]},
+        ]}
     ]
 };
 
@@ -44,6 +41,7 @@ class PhotoGallery {
     constructor() {
         this.images = [];
         this.filteredImages = [];
+        this.collectionImages = [];
         this.currentFilter = 'portrait';
         this.currentLightboxIndex = 0;
 
@@ -59,26 +57,25 @@ class PhotoGallery {
     }
 
     init() {
-        this.loadImagesNew();
-        //this.loadImages();
-        this.filterImages('portrait');
+        this.loadImages();
+        this.filterCategories('portrait');
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
     }
 
-    loadImagesNew() {
+    loadImages() {
         let images = CONFIG.staticImages.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
             category: img.category,
             pictures: img.pictures,
-            path: img.path
+            path: CONFIG.imagesFolder + img.path
         }));
         this.images = images;
     }
 
-    loadImages() {
+    loadImagesOld() {
         let images = CONFIG.staticImages.map(img => ({
             src: CONFIG.imagesFolder + img.filename,
             title: img.title,
@@ -93,6 +90,17 @@ class PhotoGallery {
         this.setHeroBackground();
     }
 
+    loadCollection(index) {
+        const coverImage = this.filteredImages[index];
+
+        this.collectionImages = image.pictures.map(name => ({
+                src: coverImage.path + name,
+                title: coverImage.title,
+                category: coverImage.category
+            }
+        ));
+    }
+
     renderGallery() {
         this.loading.style.display = 'none';
         this.gallery.innerHTML = '';
@@ -101,8 +109,6 @@ class PhotoGallery {
             const item = document.createElement('div');
             item.className = 'gallery-item fade-in';
             item.dataset.index = index;
-            console.log("image" + image.src);
-            console.log("image path: "+ image.path)
             item.innerHTML = `
                         <img src="${image.src}" alt="${image.title}" loading="lazy">
                         <div class="overlay">
@@ -137,15 +143,16 @@ class PhotoGallery {
         }, 10000);
     }
 
-    filterImages(category) {
+    filterCategories(category) {
         this.currentFilter = category;
         this.filteredImages = this.images.filter(img => img.category === category );
         this.renderGallery();
     }
 
     openLightbox(index) {
+        this.loadCollection(index)
         this.currentLightboxIndex = index;
-        const image = this.filteredImages[index];
+        const image = this.collectionImages[index];
         this.lightboxImg.src = image.src;
         this.lightboxTitle.textContent = image.title;
         this.lightboxCategory.textContent = image.category;
@@ -160,10 +167,10 @@ class PhotoGallery {
 
     navigateLightbox(direction) {
         this.currentLightboxIndex += direction;
-        if (this.currentLightboxIndex < 0) this.currentLightboxIndex = this.filteredImages.length - 1;
-        if (this.currentLightboxIndex >= this.filteredImages.length) this.currentLightboxIndex = 0;
+        if (this.currentLightboxIndex < 0) this.currentLightboxIndex = this.collectionImages.length - 1;
+        if (this.currentLightboxIndex >= this.collectionImages.length) this.currentLightboxIndex = 0;
 
-        const image = this.filteredImages[this.currentLightboxIndex];
+        const image = this.collectionImages[this.currentLightboxIndex];
         this.lightboxImg.src = image.src;
         this.lightboxTitle.textContent = image.title;
         this.lightboxCategory.textContent = image.category;
@@ -175,7 +182,7 @@ class PhotoGallery {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                this.filterImages(btn.dataset.filter);
+                this.filterCategories(btn.dataset.filter);
             });
         });
 
