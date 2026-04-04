@@ -60,7 +60,7 @@ class PhotoGallery {
 
     init() {
         this.loadImagesNew();
-        this.loadImages();
+        //this.loadImages();
         this.filterImages('portrait');
         this.setupEventListeners();
         this.setupScrollEffects();
