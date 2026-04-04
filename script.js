@@ -151,6 +151,13 @@ class PhotoGallery {
         let index = 0;
         console.log("elso" + this.images[0].category);
         console.log("masodik" + this.images[1].category);
+        console.log("egyenlo? " + this.images[1].category == 'title');
+        console.log("egyenlo? " + this.images[1].category === 'title');
+
+        console.log("egyenlo? " + this.images[1].category == "title");
+        console.log("egyenlo? " + this.images[1].category === "title");
+
+
 
         this.titleImage = this.images.filter(img => img.category == 'title');
         console.log('asd' + this.titleImage.path)
