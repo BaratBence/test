@@ -101,6 +101,7 @@ class PhotoGallery {
             item.className = 'gallery-item fade-in';
             item.dataset.index = index;
             console.log("image" + image.src);
+            console.log("image path: "+ image.path)
             item.innerHTML = `
                         <img src="${image.src}" alt="${image.title}" loading="lazy">
                         <div class="overlay">
