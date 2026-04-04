@@ -32,7 +32,11 @@ const CONFIG = {
        // { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
         //{ filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
         { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
-                'cover.jpeg', 'DSC_5932.jpeg'
+                'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg',
+                'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg'
+        ]},
+         { filename: '', title: '', category: 'title', path: 'title/', pictures: [
+                'DSC_5948.jpeg', 'DSC_6946.jpeg'
         ]}
     ]
 };
@@ -42,7 +46,8 @@ class PhotoGallery {
         this.images = [];
         this.filteredImages = [];
         this.collectionImages = [];
-        this.currentFilter = 'portrait';
+        this.titleImage = [];
+        this.currentFilter = '';
         this.currentLightboxIndex = 0;
 
         this.gallery = document.getElementById('gallery');
@@ -58,7 +63,7 @@ class PhotoGallery {
 
     init() {
         this.loadImages();
-        this.filterCategories('portrait');
+        this.filterCategories('wedding');
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
@@ -93,7 +98,7 @@ class PhotoGallery {
     loadCollection(index) {
         const coverImage = this.filteredImages[index];
 
-        this.collectionImages = image.pictures.map(name => ({
+        this.collectionImages = coverImage.pictures.map(name => ({
                 src: coverImage.path + name,
                 title: coverImage.title,
                 category: coverImage.category
@@ -113,32 +118,39 @@ class PhotoGallery {
                         <img src="${image.src}" alt="${image.title}" loading="lazy">
                         <div class="overlay">
                             <h3>${image.title}</h3>
-                            <p>${image.category}</p>
+                            <p>${this.getCategory(image.category)}</p>
                         </div>
                     `;
             this.gallery.appendChild(item);
         });
     }
 
+    getCategory(categoryName) {
+        switch(categoryName) {
+            case 'wedding': return 'esküvő';
+            case 'portrait': return 'portré';
+            case 'event' : return 'rendezvény';
+        }
+    }
+
     setHeroBackground(index = 0) {
-        const image = this.images[index];
+        const imageName = this.titleImage.pictures[index];
         this.heroBg.style.opacity = 0;
         setTimeout(() => {
-            this.heroBg.style.backgroundImage = `url(${image.src})`;
-            this.heroBg.style.opacity = 0.15;
+            this.heroBg.style.backgroundImage = `url(${this.titleImage.path} + ${imageName})`;
+            this.heroBg.style.opacity = 0.2; //0.15;
         }, 1000);
         
     }
-
 
     startHeroRotation() {
         if (this.images.length === 0) return;
 
         let index = 0;
-        this.setHeroBackground(index);
+        this.titleImage = this.images.filter(img => img.category === 'title');
 
         setInterval(() => {
-            index = (index + 1) % this.images.length;
+            index = (index + 1) % this.titleImage.pictures.length;
             this.setHeroBackground(index);
         }, 10000);
     }
