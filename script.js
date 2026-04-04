@@ -72,7 +72,8 @@ class PhotoGallery {
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
             category: img.category,
-            pictures: img.pictures
+            pictures: img.pictures,
+            path: img.path
         }));
         this.images = images;
     }
