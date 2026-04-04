@@ -134,11 +134,10 @@ class PhotoGallery {
     }
 
     setHeroBackground(index = 0) {
-        const imageName = this.titleImage.pictures[index];
+        const imageName = this.titleImage[0].pictures[index];
         this.heroBg.style.opacity = 0;
-        const imagePath = this.titleImage.path + imageName
         setTimeout(() => {
-            this.heroBg.style.backgroundImage = `url(${this.titleImage.path} + ${imageName})`;
+            this.heroBg.style.backgroundImage = `url(${this.titleImage[0].path} + ${imageName})`;
             this.heroBg.style.opacity = 0.2; //0.15;
         }, 1000);
         
@@ -160,9 +159,9 @@ class PhotoGallery {
 
 
         this.titleImage = this.images.filter(img => img.category == 'title');
-        console.log('asd' + this.titleImage.path)
+        console.log('asd' + this.titleImage[0].path)
         setInterval(() => {
-            index = (index + 1) % this.titleImage.pictures.length;
+            index = (index + 1) % this.titleImage[0].pictures.length;
             this.setHeroBackground(index);
         }, 10000);
     }
