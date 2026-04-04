@@ -145,10 +145,14 @@ class PhotoGallery {
     }
 
     startHeroRotation() {
+        console.log("before " + this.images.length)
         if (this.images.length === 0) return;
 
         let index = 0;
-        this.titleImage = this.images.filter(img => img.category === 'title');
+        console.log("elso" + this.images[0].category);
+        console.log("masodik" + this.images[1].category);
+
+        this.titleImage = this.images.filter(img => img.category == 'title');
         console.log('asd' + this.titleImage.path)
         setInterval(() => {
             index = (index + 1) % this.titleImage.pictures.length;
