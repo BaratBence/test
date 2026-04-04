@@ -4,9 +4,10 @@ const CONFIG = {
 
     // példa: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
     staticImages: [
-         { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
-                'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg',
-                'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg'
+        { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
+                'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_6240.jpeg', 'DSC_6252.jpeg', 'DSC_6269.jpeg', 'DSC_6270.jpeg', 'DSC_6276.jpeg', 'DSC_6340.jpeg',
+                'DSC_6436.jpeg', 'DSC_6503.jpeg', 'DSC_6574.jpeg', 'DSC_6596.jpeg', 'DSC_6649.jpeg', 'DSC_6752.jpeg', 'DSC_6766.jpeg', 'DSC_6791.jpeg', 'DSC_6847.jpeg',
+                'DSC_6864.jpeg', 'DSC_6890.jpeg', 'DSC_6895.jpeg', 'DSC_6901.jpeg', 'DSC_6907.jpeg', 'DSC_6913.jpeg', 'DSC_6946.jpeg', 'DSC_6962.jpeg', 'DSC_7082.jpeg', 'DSC_7091.jpeg'
         ]},
          { filename: '', title: '', category: 'title', path: 'title/', pictures: [
                 'DSC_5948.jpeg', 'DSC_6946.jpeg'
@@ -142,7 +143,7 @@ class PhotoGallery {
         const image = this.collectionImages[index];
         this.lightboxImg.src = image.src;
         this.lightboxTitle.textContent = image.title;
-        this.lightboxCategory.textContent = image.category;
+        this.lightboxCategory.textContent = this.getCategory(image.category);
         this.lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
