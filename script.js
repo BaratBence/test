@@ -4,33 +4,39 @@ const CONFIG = {
 
     // példa: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
     staticImages: [
-        { filename: 'DSC_5932.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_5948.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6240.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6252.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6269.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6270.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6276.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6340.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6436.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6503.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6574.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6596.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6649.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6752.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6766.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6791.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6847.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6864.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6890.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6895.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6901.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6907.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6913.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6946.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_6962.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' },
-        { filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' }
+        //{ filename: 'DSC_5932.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: false },
+        //{ filename: 'DSC_5948.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true },
+        //{ filename: 'DSC_6240.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'  ,cover: true},
+        //{ filename: 'DSC_6252.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+        //{ filename: 'DSC_6269.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+        //{ filename: 'DSC_6270.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+        //{ filename: 'DSC_6276.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+        //{ filename: 'DSC_6340.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        //{ filename: 'DSC_6436.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        //{ filename: 'DSC_6503.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        //{ filename: 'DSC_6574.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        //{ filename: 'DSC_6596.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+        //{ filename: 'DSC_6649.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+       // { filename: 'DSC_6752.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6766.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        //{ filename: 'DSC_6791.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6847.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6864.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6890.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6895.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6901.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6907.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6913.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6946.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
+       // { filename: 'DSC_6962.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+       // { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
+        { filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
+        { filname: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
+                'cover.jpeg', 'DSC_5932.jpeg'
+        ]},
+        { filname: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'test/', pictures: [
+                'cover.jpeg', 'DSC_5932.jpeg'
+        ]},
     ]
 };
 
@@ -53,10 +59,22 @@ class PhotoGallery {
     }
 
     init() {
+        this.loadImagesNew();
         this.loadImages();
+        this.filterImages('portrait');
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
+    }
+
+    loadImagesNew() {
+        let images = CONFIG.staticImages.map(img => ({
+            src: CONFIG.imagesFolder + img.path + img.filename,
+            title: img.title,
+            category: img.category,
+            pictures: img.pictures
+        }));
+        this.images = images;
     }
 
     loadImages() {
@@ -67,9 +85,10 @@ class PhotoGallery {
         }));
 
         this.images = images;
-        let filtered = images.filter(image => image.category === this.currentFilter)
-        this.filteredImages = [...this.images];
-        this.renderGallery();
+        //let filtered = images.filter(image => image.category === this.currentFilter)
+        //this.filteredImages = [...this.images];
+        //this.renderGallery();
+        //TODO: filter these too
         this.setHeroBackground();
     }
 
@@ -81,6 +100,7 @@ class PhotoGallery {
             const item = document.createElement('div');
             item.className = 'gallery-item fade-in';
             item.dataset.index = index;
+            console.log("image" + image.src);
             item.innerHTML = `
                         <img src="${image.src}" alt="${image.title}" loading="lazy">
                         <div class="overlay">
@@ -117,9 +137,7 @@ class PhotoGallery {
 
     filterImages(category) {
         this.currentFilter = category;
-        this.filteredImages = category === 'all'
-            ? [...this.images]
-            : this.images.filter(img => img.category === category);
+        this.filteredImages = this.images.filter(img => img.category === category );
         this.renderGallery();
     }
 
