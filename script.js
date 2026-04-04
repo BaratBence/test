@@ -54,6 +54,7 @@ class PhotoGallery {
         this.images = images;
         this.titleImage = this.images.filter(img => img.category == 'title');
         this.filteredImages = this.images.filter(img => img.category === 'wedding');
+        this.renderGallery();
     }
 
     loadImagesOld() {
