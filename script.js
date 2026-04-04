@@ -4,34 +4,7 @@ const CONFIG = {
 
     // példa: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
     staticImages: [
-        //{ filename: 'DSC_5932.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: false },
-        //{ filename: 'DSC_5948.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true },
-        //{ filename: 'DSC_6240.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'  ,cover: true},
-        //{ filename: 'DSC_6252.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6269.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6270.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6276.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6340.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6436.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6503.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6574.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6596.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6649.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-       // { filename: 'DSC_6752.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6766.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6791.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6847.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6864.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6890.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6895.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6901.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6907.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6913.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6946.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6962.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-       // { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
-        { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
+         { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
                 'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg',
                 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg'
         ]},
@@ -63,7 +36,7 @@ class PhotoGallery {
 
     init() {
         this.loadImages();
-        this.filterCategories('wedding');
+        this.setHeroBackground();
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
@@ -78,6 +51,8 @@ class PhotoGallery {
             path: CONFIG.imagesFolder + img.path
         }));
         this.images = images;
+        this.titleImage = this.images.filter(img => img.category == 'title');
+        this.filteredImages = this.images.filter(img => img.category === 'wedding');
     }
 
     loadImagesOld() {
@@ -134,23 +109,21 @@ class PhotoGallery {
     }
 
     setHeroBackground(index = 0) {
-        const imageSrc = this.titleImage.path + this.titleImage[0].pictures[index];
+        const imageSrc = this.titleImage[0].path + this.titleImage[0].pictures[index];
         console.log("asd " + imageSrc);
         this.heroBg.style.opacity = 0;
 
         setTimeout(() => {
             this.heroBg.style.backgroundImage = `url(${imageSrc})`;
-            this.heroBg.style.opacity = 0.2; //0.15;
+            this.heroBg.style.opacity = 0.3; //0.15;
         }, 1000);
         
     }
 
     startHeroRotation() {
-        console.log("before " + this.images.length)
-        if (this.images.length === 0) return;
+        if (this.titleImage.length === 0) return;
 
         let index = 0;
-        this.titleImage = this.images.filter(img => img.category == 'title');
         setInterval(() => {
             index = (index + 1) % this.titleImage[0].pictures.length;
             this.setHeroBackground(index);
