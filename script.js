@@ -111,7 +111,6 @@ class PhotoGallery {
 
     setHeroBackground(index = 0) {
         const imageSrc = this.titleImage[0].path + this.titleImage[0].pictures[index];
-        console.log("asd " + imageSrc);
         this.heroBg.style.opacity = 0;
 
         setTimeout(() => {
