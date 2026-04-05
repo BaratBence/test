@@ -1,1 +1,16 @@
-["photo1.png", "photo2.png"]
+[ 
+{ 
+    "filename": "", 
+    "title": "title", 
+    "category": "title", 
+    "path": "title/", 
+    "pictures": ["DSC_5948.jpeg","DSC_6946.jpeg"] 
+  } 
+,{ 
+    "filename": "", 
+    "title": "Lilla és Robi esküvő", 
+    "category": "wedding", 
+    "path": "wedding/Lilla és Robi esküvő/", 
+    "pictures": ["cover.jpeg","DSC_5932.jpeg","DSC_5948.jpeg","DSC_6240.jpeg","DSC_6252.jpeg","DSC_6269.jpeg","DSC_6270.jpeg","DSC_6276.jpeg","DSC_6340.jpeg","DSC_6436.jpeg","DSC_6503.jpeg","DSC_6574.jpeg","DSC_6596.jpeg","DSC_6649.jpeg","DSC_6752.jpeg","DSC_6766.jpeg","DSC_6791.jpeg","DSC_6847.jpeg","DSC_6864.jpeg","DSC_6890.jpeg","DSC_6895.jpeg","DSC_6901.jpeg","DSC_6907.jpeg","DSC_6913.jpeg","DSC_6946.jpeg","DSC_6962.jpeg","DSC_7082.jpeg","DSC_7091.jpeg"] 
+  } 
+] 

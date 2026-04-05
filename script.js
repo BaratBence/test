@@ -4,36 +4,10 @@ const CONFIG = {
 
     // példa: { filename: 'image.jpg', title: 'Optional Title', category: 'portrait' }
     staticImages: [
-        //{ filename: 'DSC_5932.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: false },
-        //{ filename: 'DSC_5948.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true },
-        //{ filename: 'DSC_6240.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'  ,cover: true},
-        //{ filename: 'DSC_6252.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6269.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6270.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6276.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6340.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6436.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6503.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6574.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6596.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-        //{ filename: 'DSC_6649.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-       // { filename: 'DSC_6752.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6766.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_6791.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6847.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6864.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6890.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6895.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6901.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6907.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6913.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6946.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding' , cover: true},
-       // { filename: 'DSC_6962.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-       // { filename: 'DSC_7082.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', cover: true },
-        //{ filename: 'DSC_7091.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding'},
         { filename: 'cover.jpeg', title: 'Lilla és Robi esküvő', category: 'wedding', path: 'Lilla és Robi esküvő/', pictures: [
-                'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg',
-                'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg', 'DSC_5932.jpeg'
+                'cover.jpeg', 'DSC_5932.jpeg', 'DSC_5948.jpeg', 'DSC_6240.jpeg', 'DSC_6252.jpeg', 'DSC_6269.jpeg', 'DSC_6270.jpeg', 'DSC_6276.jpeg', 'DSC_6340.jpeg',
+                'DSC_6436.jpeg', 'DSC_6503.jpeg', 'DSC_6574.jpeg', 'DSC_6596.jpeg', 'DSC_6649.jpeg', 'DSC_6752.jpeg', 'DSC_6766.jpeg', 'DSC_6791.jpeg', 'DSC_6847.jpeg',
+                'DSC_6864.jpeg', 'DSC_6890.jpeg', 'DSC_6895.jpeg', 'DSC_6901.jpeg', 'DSC_6907.jpeg', 'DSC_6913.jpeg', 'DSC_6946.jpeg', 'DSC_6962.jpeg', 'DSC_7082.jpeg', 'DSC_7091.jpeg'
         ]},
          { filename: '', title: '', category: 'title', path: 'title/', pictures: [
                 'DSC_5948.jpeg', 'DSC_6946.jpeg'
@@ -43,7 +17,7 @@ const CONFIG = {
 
 class PhotoGallery {
     constructor() {
-        this.images = [];
+        this.collections = [];
         this.filteredImages = [];
         this.collectionImages = [];
         this.titleImage = [];
@@ -63,36 +37,29 @@ class PhotoGallery {
 
     init() {
         this.loadImages();
-        this.filterCategories('wedding');
+        this.setHeroBackground();
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
     }
 
+
     loadImages() {
-        let images = CONFIG.staticImages.map(img => ({
+        const fs = require('fs');
+        const data = fs.readFileSync('images.json', 'utf8');
+        const array = JSON.parse(data);
+
+        let collections = array.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
             category: img.category,
             pictures: img.pictures,
             path: CONFIG.imagesFolder + img.path
         }));
-        this.images = images;
-    }
-
-    loadImagesOld() {
-        let images = CONFIG.staticImages.map(img => ({
-            src: CONFIG.imagesFolder + img.filename,
-            title: img.title,
-            category: img.category
-        }));
-
-        this.images = images;
-        //let filtered = images.filter(image => image.category === this.currentFilter)
-        //this.filteredImages = [...this.images];
-        //this.renderGallery();
-        //TODO: filter these too
-        this.setHeroBackground();
+        this.collections = collections;
+        this.titleImage = this.collections.filter(img => img.category == 'title');
+        this.filteredImages = this.collections.filter(img => img.category === 'wedding');
+        this.renderGallery();
     }
 
     loadCollection(index) {
@@ -134,30 +101,29 @@ class PhotoGallery {
     }
 
     setHeroBackground(index = 0) {
-        const imageName = this.titleImage.pictures[index];
+        const imageSrc = this.titleImage[0].path + this.titleImage[0].pictures[index];
         this.heroBg.style.opacity = 0;
+
         setTimeout(() => {
-            this.heroBg.style.backgroundImage = `url(${this.titleImage.path} + ${imageName})`;
-            this.heroBg.style.opacity = 0.2; //0.15;
+            this.heroBg.style.backgroundImage = `url(${imageSrc})`;
+            this.heroBg.style.opacity = 0.3; //0.15;
         }, 1000);
         
     }
 
     startHeroRotation() {
-        if (this.images.length === 0) return;
+        if (this.titleImage.length === 0) return;
 
         let index = 0;
-        this.titleImage = this.images.filter(img => img.category === 'title');
-
         setInterval(() => {
-            index = (index + 1) % this.titleImage.pictures.length;
+            index = (index + 1) % this.titleImage[0].pictures.length;
             this.setHeroBackground(index);
         }, 10000);
     }
 
     filterCategories(category) {
         this.currentFilter = category;
-        this.filteredImages = this.images.filter(img => img.category === category );
+        this.filteredImages = this.collections.filter(img => img.category === category );
         this.renderGallery();
     }
 
@@ -167,7 +133,7 @@ class PhotoGallery {
         const image = this.collectionImages[index];
         this.lightboxImg.src = image.src;
         this.lightboxTitle.textContent = image.title;
-        this.lightboxCategory.textContent = image.category;
+        this.lightboxCategory.textContent = this.getCategory(image.category);
         this.lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
