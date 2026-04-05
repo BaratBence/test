@@ -45,7 +45,7 @@ class PhotoGallery {
 
 
     loadImages() {
-        const array = fetch('iamges.json').then(data => data.json)
+        const array = fetch('images.json').then(data => data.json)
         
         console.log('array' + array[0].path)
         let collections = array.map(img => ({
