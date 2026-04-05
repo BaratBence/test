@@ -48,6 +48,16 @@ class PhotoGallery {
         let generateArray = []
         fetch('images.json').then(response => response.json()).then(data => {generateArray = data}).catch(error => console.error('Error loading JSON:', error));;
         
+        console.log("genA " + generateArray.length)
+        for(var i = 0; i < generateArray.length; i++) {
+            console.log("heeeeeeeeeelp");
+            console.log("array" + generateArray[i]);
+            console.log("title " + generateArray[i].title);
+            console.log("category " + generateArray[i].category);
+            console.log("pictures " + generateArray[i].pictures);
+            console.log("path " + generateArray[i].path);
+        }
+        
         let collections = generateArray.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
@@ -55,7 +65,7 @@ class PhotoGallery {
             pictures: img.pictures,
             path: CONFIG.imagesFolder + img.path
         }));
-
+        
         collections.forEach((image, index) => {
             console.log("title " + image.title);
             console.log("category " + image.category);
