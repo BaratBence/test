@@ -45,10 +45,9 @@ class PhotoGallery {
 
 
     loadImages() {
-        const fs = require('fs');
-        const data = fs.readFileSync('images.json', 'utf8');
-        const array = JSON.parse(data);
-
+        const array = fetch('iamges.json').then(data => data.json)
+        
+        console.log('array' + array[0].path)
         let collections = array.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
