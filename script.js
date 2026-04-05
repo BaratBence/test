@@ -48,17 +48,6 @@ class PhotoGallery {
         const response =  await fetch('images.json');
         generatedArray = await response.json();
         
-        
-        console.log("genA " + generatedArray.length)
-        for(var i = 0; i < generatedArray.length; i++) {
-            console.log("heeeeeeeeeelp");
-            console.log("array" + generatedArray[i]);
-            console.log("title " + generatedArray[i].title);
-            console.log("category " + generatedArray[i].category);
-            console.log("pictures " + generatedArray[i].pictures);
-            console.log("path " + generatedArray[i].path);
-        }
-        
         let collections = generatedArray.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
@@ -67,13 +56,6 @@ class PhotoGallery {
             path: CONFIG.imagesFolder + img.path
         }));
         
-        collections.forEach((image, index) => {
-            console.log("title " + image.title);
-            console.log("category " + image.category);
-            console.log("pictures " + image.pictures);
-            console.log("path " + image.path);
-
-        })
         this.collections = collections;
         this.titleImage = this.collections.filter(img => img.category == 'title');
         this.filteredImages = this.collections.filter(img => img.category === 'wedding');
