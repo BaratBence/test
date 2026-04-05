@@ -35,21 +35,19 @@ class PhotoGallery {
         this.init();
     }
 
-    init() {
-        this.loadImages();
+    async init() {
+        await this.loadImages();
         this.setHeroBackground();
         this.setupEventListeners();
         this.setupScrollEffects();
         this.startHeroRotation();
     }
 
-
-    loadImages() {
+    async loadImages() {
         let generatedArray = []
-        fetch('images.json').then(response => response.json()).then(data => {generatedArray = data; 
-            console.log("help me" + data);
-            console.log("aadsdaads" + data[0].path);
-        }).catch(error => console.error('Error loading JSON:', error));;
+        const response =  await fetch('images.json');
+        generatedArray = await response.json();
+        
         
         console.log("genA " + generatedArray.length)
         for(var i = 0; i < generatedArray.length; i++) {
