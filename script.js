@@ -45,10 +45,11 @@ class PhotoGallery {
 
 
     loadImages() {
-        const array = fetch('images.json').then(data => data.json)
+        let generateArray = []
+        fetch('images.json').then(response => response.json())
+        then(data => {generateArray = data; console.log("nyiahah " + data)}).catch(error => console.error('Error loading JSON:', error));;
         
-        array.forEach(item => console.log(item))
-        let collections = array.map(img => ({
+        let collections = generateArray.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
             category: img.category,
