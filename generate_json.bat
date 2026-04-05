@@ -18,9 +18,16 @@ for /d %%C in ("images\*") do (
         set "PATH=title/"
         set "PICTURES="
         set "FIRST_PIC=1"
+        set "FILENAME="
 
         pushd "%%C"
         for %%F in (*) do (
+            rem check for cover file (case-insensitive)
+            set "NAME=%%~nxF"
+            set "LOWNAME=!NAME!"
+            set "LOWNAME=!LOWNAME:~0,5!"
+            if /i "!LOWNAME!"=="cover" set "FILENAME=%%~nxF"
+
             if !FIRST_PIC! == 1 (
                 set PICTURES="%%~nxF"
                 set FIRST_PIC=0
@@ -30,9 +37,12 @@ for /d %%C in ("images\*") do (
         )
         popd
 
+        rem if no cover file found, leave filename empty
+        if "!FILENAME!"=="" set "FILENAME="
+
         rem write object with prefix
         echo !PREFIX!{ >> "%OUTPUT%"
-        echo     "filename": "", >> "%OUTPUT%"
+        echo     "filename": "!FILENAME!", >> "%OUTPUT%"
         echo     "title": "!EVENT!", >> "%OUTPUT%"
         echo     "category": "!CATEGORY!", >> "%OUTPUT%"
         echo     "path": "!PATH!", >> "%OUTPUT%"
@@ -49,9 +59,16 @@ for /d %%C in ("images\*") do (
             set "PATH=!CATEGORY!/!EVENT!/"
             set "PICTURES="
             set "FIRST_PIC=1"
+            set "FILENAME="
 
             pushd "%%E"
             for %%F in (*) do (
+                rem check for cover file
+                set "NAME=%%~nxF"
+                set "LOWNAME=!NAME!"
+                set "LOWNAME=!LOWNAME:~0,5!"
+                if /i "!LOWNAME!"=="cover" set "FILENAME=%%~nxF"
+
                 if !FIRST_PIC! == 1 (
                     set PICTURES="%%~nxF"
                     set FIRST_PIC=0
@@ -61,9 +78,11 @@ for /d %%C in ("images\*") do (
             )
             popd
 
+            if "!FILENAME!"=="" set "FILENAME="
+
             rem write object with prefix
             echo !PREFIX!{ >> "%OUTPUT%"
-            echo     "filename": "", >> "%OUTPUT%"
+            echo     "filename": "!FILENAME!", >> "%OUTPUT%"
             echo     "title": "!EVENT!", >> "%OUTPUT%"
             echo     "category": "!CATEGORY!", >> "%OUTPUT%"
             echo     "path": "!PATH!", >> "%OUTPUT%"
