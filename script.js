@@ -45,20 +45,23 @@ class PhotoGallery {
 
 
     loadImages() {
-        let generateArray = []
-        fetch('images.json').then(response => response.json()).then(data => {generateArray = data}).catch(error => console.error('Error loading JSON:', error));;
+        let generatedArray = []
+        fetch('images.json').then(response => response.json()).then(data => {generatedArray = data; 
+            console.log("help me" + data);
+            console.log("aadsdaads" + data[0].path);
+        }).catch(error => console.error('Error loading JSON:', error));;
         
-        console.log("genA " + generateArray.length)
-        for(var i = 0; i < generateArray.length; i++) {
+        console.log("genA " + generatedArray.length)
+        for(var i = 0; i < generatedArray.length; i++) {
             console.log("heeeeeeeeeelp");
-            console.log("array" + generateArray[i]);
-            console.log("title " + generateArray[i].title);
-            console.log("category " + generateArray[i].category);
-            console.log("pictures " + generateArray[i].pictures);
-            console.log("path " + generateArray[i].path);
+            console.log("array" + generatedArray[i]);
+            console.log("title " + generatedArray[i].title);
+            console.log("category " + generatedArray[i].category);
+            console.log("pictures " + generatedArray[i].pictures);
+            console.log("path " + generatedArray[i].path);
         }
         
-        let collections = generateArray.map(img => ({
+        let collections = generatedArray.map(img => ({
             src: CONFIG.imagesFolder + img.path + img.filename,
             title: img.title,
             category: img.category,
