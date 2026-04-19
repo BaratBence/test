@@ -191,10 +191,10 @@ new PhotoGallery();
 
 // Active nav link on scroll
 const sections = [
-    //document.getElementById('hero'),
+    document.getElementById('hero'),
     document.getElementById('about'),
     document.getElementById('pictures'),
-    document.getElementById('contacts')
+    //document.getElementById('contacts')
 ].filter(Boolean);
 
 const navLinks = document.querySelectorAll('nav a');
